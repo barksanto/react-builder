@@ -24,6 +24,17 @@ class App extends Component {
     })
   }
 
+  // this fn is for the input - updating the state when there is a change to the input value
+  nameChangedHandler = (event) => {
+    this.setState({
+      persons: [
+        { name: 'Barkley', age: 27 },
+        { name: event.target.value, age: 100 },
+        { name: 'Mango', age: 6 }
+      ]
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -35,8 +46,16 @@ class App extends Component {
           age={this.state.persons[0].age}
           // 
           click={this.switchNameHandler.bind(this, 'Squarepants Spongebob ')} />
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} >My Hobbies: Shoes</Person>
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
+        <Person
+          name={this.state.persons[1].name}
+          age={this.state.persons[1].age}
+          changed={this.nameChangedHandler} >
+          My Hobbies: Shoes
+        </Person>
+        <Person
+          name={this.state.persons[2].name}
+          age={this.state.persons[2].age}
+        />
       </div>
     );
   }
