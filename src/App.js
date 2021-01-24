@@ -4,40 +4,41 @@ import './App.css';
 import Person from './Person/Person'
 
 class App extends Component {
- state = {
-  persons: [
-    { name: 'Barkley', age: 27 },
-    { name: 'Mikayla', age: 20 },
-    { name: 'Mango', age: 6 }
-  ]
-}
-
-switchNameHandler = () => {
-  // console.log('was clicked!!!');
-  // new state! - it will merge the old state with the new one
-  this.setState({
+  state = {
     persons: [
-      { name: 'Spongebob', age: 27 },
-      { name: 'Mikayla', age: 100 },
+      { name: 'Barkley', age: 27 },
+      { name: 'Mikayla', age: 20 },
       { name: 'Mango', age: 6 }
     ]
-  })
-}
+  }
 
-render() {
-  return (
-    <div className="App">
-      <h1>Hi, I'm a React App</h1>
-      <p>It's working !!!</p>
-      <button onClick={this.switchNameHandler}>Switch Name</button>
-      <Person
-        name={this.state.persons[0].name}
-        age={this.state.persons[0].age}
-        click={this.switchNameHandler} />
-      <Person name={this.state.persons[1].name} age={this.state.persons[1].age} >My Hobbies: Shoes</Person>
-      <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
-    </div>
-  );
+  switchNameHandler = (newName) => {
+    // console.log('was clicked!!!');
+    // new state! - it will merge the old state with the new one
+    this.setState({
+      persons: [
+        { name: newName, age: 27 },
+        { name: 'Mikayla', age: 100 },
+        { name: 'Mango', age: 6 }
+      ]
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Hi, I'm a React App</h1>
+        <p>It's working !!!</p>
+        <button onClick={() => this.switchNameHandler('Yellow Sponge man')}>Switch Name</button>
+        <Person
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age}
+          // 
+          click={this.switchNameHandler.bind(this, 'Squarepants Spongebob ')} />
+        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} >My Hobbies: Shoes</Person>
+        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
+      </div>
+    );
   }
 }
 
@@ -76,7 +77,7 @@ export default App;
   //     ],
   //     otherState: 'some other value'
   //   });
-  
+
   //   const switchNameHandler = () => {
   //     // console.log('was clicked!!!');
   //     // new state! - it will merge the old state with the new one
@@ -88,7 +89,7 @@ export default App;
   //       ]
   //     });
   //   };
-  
+
   //   return (
   //     <div className="App">
   //       <h1>Hi, I'm a React App</h1>
@@ -103,6 +104,6 @@ export default App;
   //     </div>
   //   );
   // }
-  
-  
+
+
   // export default App;
