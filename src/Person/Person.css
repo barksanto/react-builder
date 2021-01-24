@@ -1,11 +1,11 @@
 /* give name of component because otherwise it's global */
 .Person{
   width: 60%;
-  margin: auto;
+  margin: 16px auto;
   border: 1px solid black;
   box-shadow: 0 2px 3px #ccc;
-  margin-top: 10px;
   padding: 16px;
   text-align: center;
   border-radius: 8px;
+
 }
