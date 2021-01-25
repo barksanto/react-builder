@@ -13,16 +13,25 @@ class App extends Component {
     showPersons: false
   }
 
-  switchNameHandler = (newName) => {
-    // console.log('was clicked!!!');
-    // new state! - it will merge the old state with the new one
-    this.setState({
-      persons: [
-        { name: newName, age: 27 },
-        { name: 'Mikayla', age: 100 },
-        { name: 'Mango', age: 7 }
-      ]
-    })
+  // commented it out becasue our app isnt calling it anymore
+  // switchNameHandler = (newName) => {
+  //   // console.log('was clicked!!!');
+  //   // new state! - it will merge the old state with the new one
+  //   this.setState({
+  //     persons: [
+  //       { name: newName, age: 27 },
+  //       { name: 'Mikayla', age: 100 },
+  //       { name: 'Mango', age: 7 }
+  //     ]
+  //   })
+  // }
+
+  // the map function that renders each person component has a 2nd argument (index)
+  deletePersonHandler = (personIndex) => {
+    const persons = this.state.persons;
+    //this removes one element from the array
+    persons.splice(personIndex, 1);
+    this.setState({ persons: persons });
   }
 
   // this fn is for the input - updating the state when there is a change to the input value
@@ -59,8 +68,12 @@ class App extends Component {
       persons = (
         <div >
           {/* this map method will be executed on each element of the persons array */}
-          {this.state.persons.map(person => {
-            return <Person name={person.name} age={person.age} />
+          {this.state.persons.map((person, index) => {
+            return <Person
+              name={person.name}
+              age={person.age}
+              key={person.index}
+              click={() => this.deletePersonHandler(index)} />
           })}
           {/* <Person
             name={this.state.persons[0].name}
