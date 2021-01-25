@@ -58,23 +58,25 @@ class App extends Component {
         {/* <button style={buttonStyle} onClick={() => this.switchNameHandler('Yellow Sponge man')}>Switch Name</button> */}
         <button style={buttonStyle} onClick={this.togglePersonsHandler}>Toggle Persons</button>
 
-        {<div >
-          <Person
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age}
-            // 
-            click={this.switchNameHandler.bind(this, 'Squarepants Spongebob ')} />
-          <Person
-            name={this.state.persons[1].name}
-            age={this.state.persons[1].age}
-            changed={this.nameChangedHandler} >
-            My Hobbies: Shoes
+        { this.state.showPersons ?
+          <div >
+            <Person
+              name={this.state.persons[0].name}
+              age={this.state.persons[0].age}
+              // 
+              click={this.switchNameHandler.bind(this, 'Squarepants Spongebob ')} />
+            <Person
+              name={this.state.persons[1].name}
+              age={this.state.persons[1].age}
+              changed={this.nameChangedHandler} >
+              My Hobbies: Shoes
           </Person>
-          <Person
-            name={this.state.persons[2].name}
-            age={this.state.persons[2].age}
-          />
-        </div>}
+            <Person
+              name={this.state.persons[2].name}
+              age={this.state.persons[2].age}
+            />
+          </div> : null
+        }
       </div>
     );
   }
