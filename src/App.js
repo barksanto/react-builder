@@ -6,9 +6,9 @@ import Person from './Person/Person'
 class App extends Component {
   state = {
     persons: [
-      { name: 'Barkley', age: 27 },
-      { name: 'Mikayla', age: 20 },
-      { name: 'Mango', age: 6 }
+      { id: 'asd1', name: 'Barkley', age: 27 },
+      { id: 'asd2', namename: 'Mikayla', age: 20 },
+      { id: 'asd3', namename: 'Mango', age: 6 }
     ],
     showPersons: false
   }
@@ -37,14 +37,29 @@ class App extends Component {
   }
 
   // this fn is for the input - updating the state when there is a change to the input value
-  nameChangedHandler = (event) => {
-    this.setState({
-      persons: [
-        { name: 'Barkley', age: 27 },
-        { name: event.target.value, age: 100 },
-        { name: 'Mango', age: 6 }
-      ]
+  nameChangedHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id
     })
+    // duplicate the person array
+    const person = {
+      ...this.state.persons[personIndex]
+    };
+    // update this persons name with value in the input 
+    person.name = event.target.value;
+    // get the persona array
+    const persons = [...this.state.persons];
+    // update it at this index
+    persons[personIndex] = person;
+    this.setState({ persons: persons })
+
+    // this.setState({
+    //   persons: [
+    //     { name: 'Barkley', age: 27 },
+    //     { name: event.target.value, age: 100 },
+    //     { name: 'Mango', age: 6 }
+    //   ]
+    // })
   }
 
   togglePersonsHandler = () => {
@@ -52,9 +67,7 @@ class App extends Component {
     this.setState({ showPersons: !doesShow })
   }
 
-
   render() {
-
     const buttonStyle = {
       backgroundColor: 'lightseagreen',
       font: 'inherit',
@@ -74,8 +87,10 @@ class App extends Component {
             return <Person
               name={person.name}
               age={person.age}
-              key={person.index}
-              click={() => this.deletePersonHandler(index)} />
+              key={person.id}
+              click={() => this.deletePersonHandler(index)}
+              // thus gets triggered when we have an onChange event so thats why we need the onChange object
+              changed={(event) => this.nameChangedHandler(event, person.id)} />
           })}
           {/* <Person
             name={this.state.persons[0].name}
@@ -98,7 +113,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>Hi, I'm a React App</h1>
+        <h1>My fkn React App</h1>
         <p>It's working !!!</p>
         {/* <button style={buttonStyle} onClick={() => this.switchNameHandler('Yellow Sponge man')}>Switch Name</button> */}
         <button style={buttonStyle} onClick={this.togglePersonsHandler}>Toggle Persons</button>
