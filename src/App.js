@@ -78,7 +78,6 @@ class App extends Component {
     }
 
     let persons = null;
-
     if (this.state.showPersons) {
       persons = (
         <div >
@@ -92,28 +91,13 @@ class App extends Component {
               // thus gets triggered when we have an onChange event so thats why we need the onChange object
               changed={(event) => this.nameChangedHandler(event, person.id)} />
           })}
-          {/* <Person
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age}
-            // 
-            click={this.switchNameHandler.bind(this, 'Squarepants Spongebob ')} />
-          <Person
-            name={this.state.persons[1].name}
-            age={this.state.persons[1].age}
-            changed={this.nameChangedHandler} >
-            My Hobbies: Shoes
-          </Person>
-          <Person
-            name={this.state.persons[2].name}
-            age={this.state.persons[2].age}
-          /> */}
         </div>
       );
     }
 
     return (
       <div className="App">
-        <h1>My fkn React App</h1>
+        <h1>Hello React App</h1>
         <p>It's working !!!</p>
         {/* <button style={buttonStyle} onClick={() => this.switchNameHandler('Yellow Sponge man')}>Switch Name</button> */}
         <button style={buttonStyle} onClick={this.togglePersonsHandler}>Toggle Persons</button>
@@ -126,65 +110,6 @@ class App extends Component {
 
 export default App;
 
-// Saved code from class component while I remake it into functional componenet with hooks
-// state = {
-//   persons: [
-//     { name: 'Barkley', age: 27 },
-//     { name: 'Mikayla', age: 20 },
-//     { name: 'Mango', age: 6 }
-//   ]
-// }
-
-// switchNameHandler = () => {
-//   // console.log('was clicked!!!');
-//   // new state! - it will merge the old state with the new one
-//   this.setState({
-//     persons: [
-//       { name: 'Spongebob', age: 27 },
-//       { name: 'Mikayla', age: 100 },
-//       { name: 'Mango', age: 6 }
-//     ]
-//   });
 
 
 
-// this code is functional component using hooks
-// const App = props => {
-  //   const [personsState, setPersonsState] = useState({
-  //     persons: [
-  //       { name: 'Barkley', age: 27 },
-  //       { name: 'Mikayla', age: 20 },
-  //       { name: 'Mango', age: 6 }
-  //     ],
-  //     otherState: 'some other value'
-  //   });
-
-  //   const switchNameHandler = () => {
-  //     // console.log('was clicked!!!');
-  //     // new state! - it will merge the old state with the new one
-  //     setPersonsState({
-  //       persons: [
-  //         { name: 'Spongebob', age: 27 },
-  //         { name: 'Mikayla', age: 100 },
-  //         { name: 'Mango', age: 6 }
-  //       ]
-  //     });
-  //   };
-
-  //   return (
-  //     <div className="App">
-  //       <h1>Hi, I'm a React App</h1>
-  //       <p>It's working !!!</p>
-  //       <button onClick={switchNameHandler}>Switch Name</button>
-  //       <Person
-  //         name={personsState.persons[0].name}
-  //         age={personsState.persons[0].age}
-  //         click={this.switchNameHandler} />
-  //       <Person name={personsState.persons[1].name} age={personsState.persons[1].age} >My Hobbies: Shoes</Person>
-  //       <Person name={personsState.persons[2].name} age={personsState.persons[2].age} />
-  //     </div>
-  //   );
-  // }
-
-
-  // export default App;
