@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import React, { useState } from 'react';
 import './App.css';
 import Person from './Person/Person'
+import ValidationComponent from './ValidationComponent'
 
 class App extends Component {
   state = {
@@ -10,7 +11,8 @@ class App extends Component {
       { id: 'asd2', namename: 'Mikayla', age: 20 },
       { id: 'asd3', namename: 'Mango', age: 6 }
     ],
-    showPersons: false
+    showPersons: false,
+    inputValue: null
   }
 
   // commented it out becasue our app isnt calling it anymore
@@ -69,6 +71,9 @@ class App extends Component {
 
   outputLength = (event) => {
     console.log(event.target.value);
+    this.setState({
+      inputValue: event.target.value
+    })
   }
 
   render() {
@@ -107,6 +112,7 @@ class App extends Component {
         <button style={buttonStyle} onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {persons}
         <input type="text" onChange={this.outputLength} />
+        <ValidationComponent inputVal={this.state.inputValue} />
       </div>
     );
   }
