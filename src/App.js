@@ -72,7 +72,7 @@ class App extends Component {
   outputLength = (event) => {
     console.log(event.target.value);
     this.setState({
-      inputValue: event.target.value
+      inputValue: event.target.value.length
     })
   }
 
@@ -112,7 +112,7 @@ class App extends Component {
         <button style={buttonStyle} onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {persons}
         <input type="text" onChange={this.outputLength} />
-        <ValidationComponent inputVal={this.state.inputValue} />
+        <ValidationComponent inputVal={this.state.inputValue}/>
       </div>
     );
   }
