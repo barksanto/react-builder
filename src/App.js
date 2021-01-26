@@ -67,6 +67,10 @@ class App extends Component {
     this.setState({ showPersons: !doesShow })
   }
 
+  outputLength = (event) => {
+    console.log(event.target.value);
+  }
+
   render() {
     const buttonStyle = {
       backgroundColor: 'lightseagreen',
@@ -102,6 +106,7 @@ class App extends Component {
         {/* <button style={buttonStyle} onClick={() => this.switchNameHandler('Yellow Sponge man')}>Switch Name</button> */}
         <button style={buttonStyle} onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {persons}
+        <input type="text" onChange={this.outputLength} />
       </div>
     );
   }
