@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'
 import ValidationComponent from './ValidationComponent'
+import CharComponent from './CharComponent'
 
 class App extends Component {
   state = {
@@ -12,6 +13,7 @@ class App extends Component {
       { id: 'asd3', namename: 'Mango', age: 6 }
     ],
     showPersons: false,
+    inputLength: null,
     inputValue: null
   }
 
@@ -71,7 +73,8 @@ class App extends Component {
 
   outputLength = (event) => {
     this.setState({
-      inputLength: event.target.value.length
+      inputLength: event.target.value.length,
+      inputValue: event.target.value
     })
   }
 
@@ -112,6 +115,7 @@ class App extends Component {
         {persons}
         <input type="text" onChange={this.outputLength} />
         <ValidationComponent inputVal={this.state.inputLength} />
+        <CharComponent chars={this.state.inputValue} />
       </div>
     );
   }
