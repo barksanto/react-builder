@@ -8,10 +8,11 @@ const validationComponent = (props) => {
   } else {
     statement = 'text too short';
   }
-  console.log(statement)
+
   return (
     <div className="Person">
       <p>{props.inputVal}</p>
+      <p>{statement}</p>
     </div>
   )
 }
