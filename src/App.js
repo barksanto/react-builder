@@ -25,7 +25,7 @@ class App extends Component {
   //     ]
   //   })
   // }
-
+  // 
   // the map function that renders each person component has a 2nd argument (index)
   deletePersonHandler = (personIndex) => {
     // const persons = this.state.persons.slice(); // slice allows us to safely copy the array w/o mutating it 
