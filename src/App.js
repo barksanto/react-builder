@@ -78,6 +78,12 @@ class App extends Component {
     })
   }
 
+  deleteChar = (charIndex) => {
+    const chars = [...this.state.inputValue]
+    chars.splice(charIndex, 1);
+    this.setState({ inputValue: chars });
+  }
+
   render() {
     const buttonStyle = {
       backgroundColor: 'lightseagreen',
@@ -114,8 +120,8 @@ class App extends Component {
         <button style={buttonStyle} onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {persons}
         <input type="text" onChange={this.outputLength} />
-        <ValidationComponent inputVal={this.state.inputLength} />
-        <CharComponent chars={this.state.inputValue} />
+        <ValidationComponent inputLength={this.state.inputLength} />
+        <CharComponent chars={this.state.inputValue} delete={() => this.deleteChar} value={this.state.inputValue} />
       </div>
     );
   }

@@ -12,12 +12,12 @@ const charComponent = (props) => {
   let charArray = [];
   if (props.chars) {
     charArray = props.chars.split('');
-    console.log(charArray)
+    // console.log(charArray)
   }
   let eachThing = null
   if (charArray.length > 0) {
     eachThing = charArray.map((element, index) => {
-      return <li key={index} style={style}>{element}</li>
+      return <li onClick={props.delete(index)} key={index} style={style}>{element}</li>
     })
   }
   return (
