@@ -78,10 +78,11 @@ class App extends Component {
     })
   }
 
-  deleteChar = (charIndex) => {
-    const chars = [...this.state.inputValue]
-    chars.splice(charIndex, 1);
-    this.setState({ inputValue: chars });
+  deleteCharHandler = (index) => {
+    const text = this.state.inputValue.split('');
+    text.splice(index, 1);
+    const updatedText = text.join('');
+    this.setState({ inputValue: updatedText });
   }
 
   render() {
@@ -112,8 +113,12 @@ class App extends Component {
       );
     }
 
-    const charList = this.state.inputValue.split('').map(char => {
-      return <CharComponent character={char}/>
+    const charList = this.state.inputValue.split('').map((char, index) => {
+      return <CharComponent
+        character={char}
+        key={index}
+        clicked={() => this.deleteCharHandler(index)
+        } />
     })
 
     return (
