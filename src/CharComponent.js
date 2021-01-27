@@ -9,22 +9,23 @@ const charComponent = (props) => {
     border: '1px solid black'
   }
 
-  let charArray = [];
-  if (props.chars) {
-    charArray = props.chars.split('');
-    // console.log(charArray)
-  }
-  let eachThing = null
-  if (charArray.length > 0) {
-    eachThing = charArray.map((element, index) => {
-      return <li onClick={props.delete(index)} key={index} style={style}>{element}</li>
-    })
-  }
+  // let charArray = [];
+  // if (props.chars) {
+  //   charArray = props.chars.split('');
+  //   // console.log(charArray)
+  // }
+  // let eachThing = null
+  // if (charArray.length > 0) {
+  //   eachThing = charArray.map((element, index) => {
+  //     return <li onClick={props.delete(index)} key={index} style={style}>{element}</li>
+  //   })
+  // }
   return (
-    <div>
-      <ul>
+    <div style={style}>
+      {/* <ul>
         {eachThing}
-      </ul>
+      </ul> */}
+      {props.character}
     </div>
   )
 

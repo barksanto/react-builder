@@ -14,7 +14,7 @@ class App extends Component {
     ],
     showPersons: false,
     inputLength: null,
-    inputValue: null
+    inputValue: ''
   }
 
   // commented it out becasue our app isnt calling it anymore
@@ -112,6 +112,10 @@ class App extends Component {
       );
     }
 
+    const charList = this.state.inputValue.split('').map(char => {
+      return <CharComponent character={char}/>
+    })
+
     return (
       <div className="App">
         <h1>Hello React App</h1>
@@ -121,7 +125,8 @@ class App extends Component {
         {persons}
         <input type="text" onChange={this.outputLength} />
         <ValidationComponent inputLength={this.state.inputLength} />
-        <CharComponent chars={this.state.inputValue} delete={() => this.deleteChar} value={this.state.inputValue} />
+        {/* <CharComponent chars={this.state.inputValue} delete={() => this.deleteChar} value={this.state.inputValue} /> */}
+        {charList}
       </div>
     );
   }
